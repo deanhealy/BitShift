@@ -17,8 +17,12 @@
         </Grid.RowDefinitions>
 
         <!-- ═══ HEADER ═══ -->
-        <Image Grid.Row="0" Source="Assets\Bitshift_Logo.png" Height="60" HorizontalAlignment="Left"
-               Margin="0,0,0,2" RenderOptions.BitmapScalingMode="HighQuality"/>
+        <StackPanel Grid.Row="0" Margin="0,0,0,0">
+            <Image Source="Assets\Bitshift_Logo.png" Height="80" HorizontalAlignment="Left"
+                   RenderOptions.BitmapScalingMode="HighQuality"/>
+            <TextBlock Text="Seamless File Metamorphosis" FontSize="11" Foreground="#555"
+                       FontFamily="Consolas" Margin="0,4,0,0"/>
+        </StackPanel>
         <Border Grid.Row="0" Height="1" Background="#222" VerticalAlignment="Bottom" Margin="0,0,0,0"/>
 
         <!-- ═══ INPUT ═══ -->
