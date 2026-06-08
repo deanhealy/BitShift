@@ -17,10 +17,10 @@
         </Grid.RowDefinitions>
 
         <!-- ═══ HEADER ═══ -->
-        <StackPanel Grid.Row="0" Margin="0,0,0,0">
+        <StackPanel Grid.Row="0" HorizontalAlignment="Left" Margin="0,0,0,0">
             <Image Source="Assets\Bitshift_Logo.png" Height="80" HorizontalAlignment="Left"
                    RenderOptions.BitmapScalingMode="HighQuality"/>
-            <TextBlock Text="Seamless File Metamorphosis" FontSize="11" Foreground="#555"
+            <TextBlock Text="Seamless File Metamorphosis" FontSize="13" Foreground="#555"
                        FontFamily="Consolas" Margin="0,4,0,0"/>
         </StackPanel>
         <Border Grid.Row="0" Height="1" Background="#222" VerticalAlignment="Bottom" Margin="0,0,0,0"/>
@@ -100,7 +100,7 @@
 
                 <Button Grid.Column="1" Name="BtnOutputFolder" Content="BROWSE"
                         Padding="14,7" Style="{StaticResource SecondaryButton}"
-                        VerticalAlignment="Bottom" Margin="0,0,0,0"
+                        Height="34" VerticalAlignment="Bottom" Margin="0,0,0,0"
                         Click="BtnOutputFolder_Click"/>
 
                 <StackPanel Grid.Column="3" VerticalAlignment="Bottom">

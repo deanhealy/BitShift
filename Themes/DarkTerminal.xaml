@@ -130,6 +130,18 @@
                                 <ToggleButton x:Name="ToggleButton" Background="Transparent"
                                               BorderThickness="0" HorizontalAlignment="Right"
                                               Width="28" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
+                                    <ToggleButton.Template>
+                                        <ControlTemplate TargetType="ToggleButton">
+                                            <Border x:Name="TbBd" Background="#0a0a0a" Padding="0">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="TbBd" Property="Background" Value="#1a1a1a"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </ToggleButton.Template>
                                     <Path x:Name="Arrow" Data="M0,0 L5,4 L10,0"
                                           Stroke="{StaticResource TextBrush}" StrokeThickness="1.5"
                                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -149,6 +161,7 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Bd" Property="Background" Value="{StaticResource HoverBrush}"/>
                             <Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource TextBrush}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
