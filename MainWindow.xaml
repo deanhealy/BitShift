@@ -1,0 +1,190 @@
+﻿<Window x:Class="FileConverter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="File Converter" Height="620" Width="780"
+        WindowStartupLocation="CenterScreen" Closing="Window_Closing"
+        Background="#000000" Foreground="#e0e0e0" FontFamily="Consolas"
+        WindowStyle="SingleBorderWindow" ResizeMode="CanMinimize">
+    <Grid Margin="28,24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- ═══ HEADER ═══ -->
+        <TextBlock Grid.Row="0" Text="FILE CONVERTER" FontSize="18" FontWeight="Bold"
+                   Foreground="#e0e0e0" Margin="0,0,0,2"/>
+        <Border Grid.Row="0" Height="1" Background="#222" VerticalAlignment="Bottom" Margin="0,0,0,0"/>
+
+        <!-- ═══ INPUT ═══ -->
+        <Grid Grid.Row="1" Margin="0,20,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Text="INPUT" FontSize="10" FontWeight="Bold"
+                       Foreground="#555" Margin="0,0,0,8"/>
+
+            <Border Grid.Row="1" BorderBrush="#222" BorderThickness="1" Margin="0,0,0,0"
+                    Name="DropZone" AllowDrop="True">
+                <Border.ToolTip>
+                    <TextBlock Text="Drag &amp; drop files here" FontFamily="Consolas" FontSize="11"/>
+                </Border.ToolTip>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox Grid.Row="0" Name="TxtInputFile" Height="34"
+                             IsReadOnly="True" Style="{StaticResource TerminalTextBox}"
+                             VerticalAlignment="Center"
+                             VerticalScrollBarVisibility="Disabled"
+                             HorizontalScrollBarVisibility="Disabled"
+                             TextWrapping="NoWrap"/>
+                    <Button Grid.Column="1" Grid.Row="0" Name="BtnBrowse" Content="BROWSE" Padding="14,7"
+                            Style="{StaticResource SecondaryButton}"
+                            Click="BtnBrowse_Click"/>
+
+                    <!-- File list -->
+                    <ListBox Grid.Row="1" Grid.ColumnSpan="2" Name="FileList" Margin="0"
+                             MaxHeight="80" Visibility="Collapsed"
+                             Style="{StaticResource TerminalListBox}"
+                             ItemContainerStyle="{StaticResource TerminalListBoxItem}"
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!-- ═══ OUTPUT + FORMAT ═══ -->
+        <Grid Grid.Row="2" Margin="0,20,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="OUTPUT" FontSize="10" FontWeight="Bold"
+                               Foreground="#555" Margin="0,0,0,8"/>
+                    <TextBox Grid.Column="0" Name="TxtOutputFolder" Height="34"
+                             Style="{StaticResource TerminalTextBox}"
+                             VerticalScrollBarVisibility="Disabled"
+                             HorizontalScrollBarVisibility="Disabled"
+                             TextWrapping="NoWrap"/>
+                </StackPanel>
+
+                <Button Grid.Column="1" Name="BtnOutputFolder" Content="BROWSE"
+                        Padding="14,7" Style="{StaticResource SecondaryButton}"
+                        VerticalAlignment="Bottom" Margin="0,0,0,0"
+                        Click="BtnOutputFolder_Click"/>
+
+                <StackPanel Grid.Column="3" VerticalAlignment="Bottom">
+                    <TextBlock Text="FORMAT" FontSize="10" FontWeight="Bold"
+                               Foreground="#555" Margin="0,0,0,8"/>
+                    <ComboBox Name="CboFormat" Width="90" Height="30"
+                              Style="{StaticResource TerminalComboBox}"
+                              ItemContainerStyle="{StaticResource TerminalComboBoxItem}"
+                              SelectionChanged="CboFormat_SelectionChanged"/>
+                </StackPanel>
+
+                <TextBlock Grid.Column="5" Name="LblExtension" VerticalAlignment="Bottom"
+                           Margin="6,0,0,10" FontWeight="Bold" Foreground="#555" FontSize="13"/>
+            </Grid>
+
+            <!-- Filename row -->
+            <Grid Grid.Row="1" Margin="0,16,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="FILENAME" FontSize="10" FontWeight="Bold"
+                               Foreground="#555" Margin="0,0,0,8"/>
+                    <TextBox Name="TxtFileName" Height="34"
+                             Style="{StaticResource TerminalTextBox}"
+                             VerticalScrollBarVisibility="Disabled"
+                             HorizontalScrollBarVisibility="Disabled"
+                             TextWrapping="NoWrap"/>
+                </StackPanel>
+                <CheckBox Grid.Column="1" Name="ChkOverwrite" Content="OVERWRITE"
+                          Style="{StaticResource TerminalCheckBox}"
+                          VerticalAlignment="Bottom" Margin="16,0,0,10"/>
+            </Grid>
+        </Grid>
+
+        <!-- ═══ ACTIONS ═══ -->
+        <Grid Grid.Row="3" Margin="0,20,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Button Name="BtnConvert" Content="CONVERT" Padding="32,10"
+                        Style="{StaticResource PrimaryButton}" Click="BtnConvert_Click"/>
+            </StackPanel>
+
+            <Button Grid.Column="2" Name="BtnCancel" Content="CANCEL" Padding="20,10"
+                    Style="{StaticResource SecondaryButton}" Margin="12,0,0,0"
+                    Click="BtnCancel_Click" Visibility="Collapsed"/>
+        </Grid>
+
+        <!-- ═══ PROGRESS ═══ -->
+        <ProgressBar Grid.Row="4" Name="ProgressBar" Margin="0,16,0,0"
+                     Style="{StaticResource TerminalProgressBar}" Visibility="Collapsed"/>
+
+        <!-- ═══ LOG ═══ -->
+        <Grid Grid.Row="5" Margin="0,20,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Text="LOG" FontSize="10" FontWeight="Bold"
+                       Foreground="#555" Margin="0,0,0,8"/>
+
+            <Border Grid.Row="1" BorderBrush="#222" BorderThickness="1">
+                <ScrollViewer Name="LogScroller" VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Disabled"
+                              ScrollChanged="LogScroller_ScrollChanged">
+                    <StackPanel Name="LogPanel" Margin="10,8"/>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+
+        <!-- ═══ STATUS BAR ═══ -->
+        <Grid Grid.Row="6" Margin="0,16,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Border Height="1" Background="#222" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+            <TextBlock Name="TxtStatus" Text="READY" FontSize="10"
+                       Foreground="#555" FontWeight="Bold" VerticalAlignment="Bottom" Margin="0,8,0,0"/>
+            <TextBlock Name="TxtFfmpegStatus" FontSize="10" Foreground="#555"
+                       Grid.Column="1" VerticalAlignment="Bottom" Margin="0,8,0,0"/>
+        </Grid>
+    </Grid>
+</Window>

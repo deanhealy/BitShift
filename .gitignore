@@ -1,0 +1,20 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.userprefs
+
+## Visual Studio
+.vs/
+
+## Build outputs
+publish/
+
+## FFmpeg binaries (auto-downloaded on first run)
+ffmpeg/
+
+## OS
+Thumbs.db
+.DS_Store
