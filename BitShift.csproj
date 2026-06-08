@@ -11,6 +11,6 @@
     <AssemblyName>BitShift</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
-    <Resource Include="BitShift logo.png" />
+    <Resource Include="Assets\Bitshift_Logo.png" />
   </ItemGroup>
 </Project>

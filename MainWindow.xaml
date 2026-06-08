@@ -17,7 +17,7 @@
         </Grid.RowDefinitions>
 
         <!-- ═══ HEADER ═══ -->
-        <Image Grid.Row="0" Source="BitShift logo.png" Height="60" HorizontalAlignment="Left"
+        <Image Grid.Row="0" Source="Assets\Bitshift_Logo.png" Height="60" HorizontalAlignment="Left"
                Margin="0,0,0,2" RenderOptions.BitmapScalingMode="HighQuality"/>
         <Border Grid.Row="0" Height="1" Background="#222" VerticalAlignment="Bottom" Margin="0,0,0,0"/>
 
