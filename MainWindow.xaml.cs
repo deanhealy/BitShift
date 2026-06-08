@@ -7,7 +7,7 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Windows;
 
-namespace FileConverter;
+namespace BitShift;
 
 public partial class MainWindow : Window
 {
@@ -30,7 +30,7 @@ public partial class MainWindow : Window
             if (HasWriteAccess(ExeDir))
                 return portable;
             return Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "FileConverter", "ffmpeg");
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "BitShift", "ffmpeg");
         }
     }
 
@@ -157,7 +157,7 @@ public partial class MainWindow : Window
         try
         {
             using var client = new HttpClient { Timeout = TimeSpan.FromMinutes(5) };
-            client.DefaultRequestHeaders.UserAgent.ParseAdd("FileConverter/1.0");
+            client.DefaultRequestHeaders.UserAgent.ParseAdd("BitShift/1.0");
 
             var release = await GetLatestFfmpegReleaseUrl(client);
             if (release == null)

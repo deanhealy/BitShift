@@ -1,7 +1,7 @@
-﻿<Window x:Class="FileConverter.MainWindow"
+﻿<Window x:Class="BitShift.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="File Converter" Height="620" Width="780"
+        Title="BitShift" Height="620" Width="780"
         WindowStartupLocation="CenterScreen" Closing="Window_Closing"
         Background="#000000" Foreground="#e0e0e0" FontFamily="Consolas"
         WindowStyle="SingleBorderWindow" ResizeMode="CanMinimize">
@@ -17,7 +17,7 @@
         </Grid.RowDefinitions>
 
         <!-- ═══ HEADER ═══ -->
-        <TextBlock Grid.Row="0" Text="FILE CONVERTER" FontSize="18" FontWeight="Bold"
+        <TextBlock Grid.Row="0" Text="BITSHIFT" FontSize="18" FontWeight="Bold"
                    Foreground="#e0e0e0" Margin="0,0,0,2"/>
         <Border Grid.Row="0" Height="1" Background="#222" VerticalAlignment="Bottom" Margin="0,0,0,0"/>
 

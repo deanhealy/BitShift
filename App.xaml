@@ -1,7 +1,7 @@
-﻿<Application x:Class="FileConverter.App"
+﻿<Application x:Class="BitShift.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:FileConverter"
+             xmlns:local="clr-namespace:BitShift"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
