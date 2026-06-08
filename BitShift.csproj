@@ -9,8 +9,10 @@
     <UseWindowsForms>true</UseWindowsForms>
     <RootNamespace>BitShift</RootNamespace>
     <AssemblyName>BitShift</AssemblyName>
+    <ApplicationIcon>Assets\app-icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Resource Include="Assets\Bitshift_Logo.png" />
+    <Resource Include="Assets\app-icon.png" />
   </ItemGroup>
 </Project>
