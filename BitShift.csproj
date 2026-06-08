@@ -7,5 +7,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
+    <RootNamespace>BitShift</RootNamespace>
+    <AssemblyName>BitShift</AssemblyName>
   </PropertyGroup>
+  <ItemGroup>
+    <Resource Include="BitShift logo.png" />
+  </ItemGroup>
 </Project>
